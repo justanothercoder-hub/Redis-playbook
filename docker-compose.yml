@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: redis_demo
+    restart: unless-stopped
+
+  redis:
+    image: redis:latest
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
